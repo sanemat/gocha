@@ -24,3 +24,6 @@ ENV HOME /home/appuser
 
 RUN git clone https://github.com/tagomoris/xbuild $HOME/xbuild
 RUN mkdir -p $HOME/local
+
+# Re change user
+USER root
