@@ -13,19 +13,5 @@ RUN apt-get install -yq redis-server
 RUN apt-get install -yq ruby ruby-dev
 RUN apt-get install -yq nodejs nodejs-dev
 
-# Create user
-ENV APP_USER appuser
-RUN adduser $APP_USER -m
-RUN echo $APP_USER:$APP_USER234 | chpasswd
-RUN echo $APP_USER ALL=(ALL) NOPASSWD:ALL >> /etc/sudoers.d/docker
-
-# Change user
-USER appuser
-WORKDIR /home/appuser
-ENV HOME /home/appuser
-
-RUN git clone https://github.com/tagomoris/xbuild $HOME/xbuild
-RUN mkdir -p $HOME/local
-
 # Re change user
 USER root
