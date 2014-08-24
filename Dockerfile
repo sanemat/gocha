@@ -15,7 +15,9 @@ RUN apt-get install -yq nodejs nodejs-dev
 
 # Create user
 ENV APP_USER appuser
-RUN adduser $APP_USER
+RUN adduser $APP_USER -m
+RUN echo $APP_USER:$APP_USER234 | chpasswd
+RUN echo $APP_USER ALL=(ALL) NOPASSWD:ALL >> /etc/sudoers.d/docker
 
 # Change user
 USER appuser
