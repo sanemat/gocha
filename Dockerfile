@@ -5,6 +5,9 @@ MAINTAINER sanemat sanemat@tachikoma.io
 RUN apt-get -yq update
 
 # install middleware
+RUN apt-get install -yq language-pack-en language-pack-ja
+RUN echo 'LANG="en_US.UTF-8"' >> /etc/default/locale
+
 RUN apt-get install -yq git build-essential curl
 RUN apt-get install -yq zlib1g-dev libssl-dev libpq-dev imagemagick libmagickwand-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev libqtwebkit-dev
 RUN apt-get install -yq postgresql sqlite memcached mongodb
