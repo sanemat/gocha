@@ -4,6 +4,9 @@ MAINTAINER sanemat sanemat@tachikoma.io
 
 RUN apt-get -yq update
 
+# Fix shell shock
+RUN apt-get install -yq bash
+
 # install middleware
 RUN apt-get install -yq language-pack-en language-pack-ja
 RUN update-locale LANG=en_US.UTF-8
