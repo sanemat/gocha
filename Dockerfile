@@ -2,13 +2,11 @@ FROM ubuntu:14.04
 
 MAINTAINER sanemat sanemat@tachikoma.io
 
-RUN apt-get -yq update
+RUN apt-get -yq update && apt-get install -yq \
+    bash \
+    language-pack-en \
+    language-pack-ja
 
-# Fix shell shock
-RUN apt-get install -yq bash
-
-# install middleware
-RUN apt-get install -yq language-pack-en language-pack-ja
 RUN update-locale LANG=en_US.UTF-8
 
 RUN apt-get install -yq git build-essential curl
