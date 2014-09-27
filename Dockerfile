@@ -31,6 +31,7 @@ RUN apt-get -yq update && apt-get install -yq \
 RUN apt-get -yq update && apt-get install -yq \
     postgresql \
     sqlite \
+    libsqlite3-dev \
     memcached \
     mongodb \
     mysql-server-5.6 \
