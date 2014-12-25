@@ -2,6 +2,8 @@ FROM ubuntu:14.04
 
 MAINTAINER sanemat sanemat@tachikoma.io
 
+env DEBIAN_FRONTEND noninteractive
+
 # Base
 RUN apt-get -yq update && apt-get install -yq \
     bash \
