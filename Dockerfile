@@ -8,7 +8,9 @@ env DEBIAN_FRONTEND noninteractive
 RUN apt-get -yq update && apt-get install -yq \
     bash \
     language-pack-en \
-    language-pack-ja
+    language-pack-ja \
+    && apt-get clean \
+    && rm -fr /var/cache/apt/archives/*
 
 # Set locale
 RUN update-locale LANG=en_US.UTF-8
@@ -27,7 +29,9 @@ RUN apt-get -yq update && apt-get install -yq \
     libyaml-dev \
     libxml2-dev \
     libxslt-dev \
-    libqtwebkit-dev
+    libqtwebkit-dev \
+    && apt-get clean \
+    && rm -fr /var/cache/apt/archives/*
 
 # Middleware
 RUN apt-get -yq update && apt-get install -yq \
@@ -38,14 +42,21 @@ RUN apt-get -yq update && apt-get install -yq \
     mongodb \
     mysql-server-5.6 \
     libmysqld-dev \
-    redis-server
+    redis-server \
+    && apt-get clean \
+    && rm -fr /var/cache/apt/archives/*
 
 # Programming Language
 RUN apt-get -yq update && apt-get install -yq \
     ruby \
     ruby-dev \
     nodejs \
-    nodejs-dev
+    nodejs-dev \
+    && apt-get clean \
+    && rm -fr /var/cache/apt/archives/*
+
+# cleanup
+RUN apt-get clean && rm -fr /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 # Re change user
 USER root
